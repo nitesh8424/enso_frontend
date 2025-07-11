@@ -13,8 +13,8 @@ function DisplayPage() {
     const fetchRandomImage = async () => {
         try {
             const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL)
-            console.log('randomImage',randomImage)
-            return { imageUrl: randomImage?.message }
+            console.log('randomImage',randomImage?.data)
+            return { imageUrl: randomImage?.data?.message }
             // return 'https://media.geeksforgeeks.org/gfg-gg-logo.svg'
         } catch (error) {
             console.log('error while image fetch : ', error)
