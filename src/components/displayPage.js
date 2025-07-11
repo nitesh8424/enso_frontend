@@ -32,15 +32,16 @@ function DisplayPage() {
                   localData = fetchUsers.data;
                   if(localData?.length===0){
                     localData = JSON.parse(localStorage.getItem('userData'));
-                  }else{
-                  const updatedUser = await Promise.all(
-                    localData.map(async (user) => {
-                        const res = await fetchRandomImage();
-                        return { ...user, profilePhoto: res };
-                    })
-                   );
-                    updateLocalStorage(updatedUser);
                   }
+                  //else{
+                  //const updatedUser = await Promise.all(
+                    //localData.map(async (user) => {
+                        //const res = await fetchRandomImage();
+                      //  return { ...user, profilePhoto: res };
+                  //  })
+                  // );
+                updateLocalStorage(updatedUser);
+                  //}
                 setUserData(localData);
             } catch (error) {
 
