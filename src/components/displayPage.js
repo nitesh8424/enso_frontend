@@ -26,21 +26,21 @@ function DisplayPage() {
 
     useEffect(() => {
         const fetcData = async () => {
+            let localData;
             try {
-                let localData = localStorage.getItem('userData');
-                if (localData) {
-                    localData = JSON.parse(localData);
-                } else {
-                    const fetchUsers = await axios.get(`${process.env.REACT_APP_API_URL}/api/user`)
-                    localData = fetchUsers.data;
-                }
-                const updatedUser = await Promise.all(
+                  const fetchUsers = await axios.get(`${process.env.REACT_APP_API_URL}/api/user`)
+                  localData = fetchUsers.data;
+                  if(localData?.length===0){
+                    localData = JSON.parse(localStorage.getItem('userData'));
+                  }else{
+                  const updatedUser = await Promise.all(
                     localData.map(async (user) => {
                         const res = await fetchRandomImage();
                         return { ...user, profilePhoto: res };
                     })
-                );
-                updateLocalStorage(updatedUser);
+                   );
+                    updateLocalStorage(updatedUser);
+                  }
                 setUserData(localData);
             } catch (error) {
 
