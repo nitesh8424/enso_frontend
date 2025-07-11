@@ -12,7 +12,10 @@ function DisplayPage() {
     }
     const fetchRandomImage = async () => {
         try {
-            const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL)
+            const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL, {timeout : 100 * 1000})
+            const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL, {
+                timeout: 10 * 1000, // 10 seconds
+             });
             console.log('randomImage',randomImage?.data)
             return randomImage?.data?.message;
             // return 'https://media.geeksforgeeks.org/gfg-gg-logo.svg'
@@ -28,8 +31,11 @@ function DisplayPage() {
         const fetcData = async () => {
             let localData;
             try {
-                  const fetchUsers = await axios.get(`${process.env.REACT_APP_API_URL}/api/user`)
+                  const fetchUsers = await axios.get(`${process.env.REACT_APP_API_URL}/api/user` , {
+                   timeout: 10 * 1000, // 10 seconds
+                  });
                   localData = fetchUsers.data;
+                  updateLocalStorage(localData)
                   if(localData?.length===0){
                     localData = JSON.parse(localStorage.getItem('userData'));
                   }
@@ -41,11 +47,11 @@ function DisplayPage() {
                   //  })
                   // );
                 //updateLocalStorage(updatedUser);
-                updateLocalStorage(localData)
                   //}
                 setUserData(localData);
             } catch (error) {
-
+                console.log('fetch error', error);
+                setUserData(localData)
             }
         }
         fetcData();
