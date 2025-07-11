@@ -38,6 +38,7 @@ function AddUser() {
         <div className="App">
             <header className="">
                 <p> ADD USER DATA </p>
+                <p onclick{()=>navigate('/displayPage')}> Display Cards </p>
             </header>
             <div style={{ textAlign: 'left', width: '300px', margin: 'auto', backgroundColor: 'lightyellow', padding: '10px 10px 10px 10px' }}>
                 <p> First Name : <input style={{ float: 'right', height: '20px' }} type='text' onChange={e => onChangeValue(e.target.value, 'firstName')} /> </p>
