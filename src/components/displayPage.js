@@ -40,7 +40,8 @@ function DisplayPage() {
                       //  return { ...user, profilePhoto: res };
                   //  })
                   // );
-                updateLocalStorage(updatedUser);
+                //updateLocalStorage(updatedUser);
+                updateLocalStorage(localData)
                   //}
                 setUserData(localData);
             } catch (error) {
