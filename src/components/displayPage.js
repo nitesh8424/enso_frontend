@@ -12,7 +12,6 @@ function DisplayPage() {
     }
     const fetchRandomImage = async () => {
         try {
-            const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL, {timeout : 100 * 1000})
             const randomImage = await axios.get(process.env.REACT_APP_RANDOM_IMAGE_URL, {
                 timeout: 10 * 1000, // 10 seconds
              });
