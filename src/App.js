@@ -11,7 +11,7 @@ function App() {
           <Route path='/' Component={AddUser}/>
           <Route path='/displayPage' Component={DisplayPage}/>
       </Routes>
-     <HashRouter>
+    </HashRouter>
      
   );
 
